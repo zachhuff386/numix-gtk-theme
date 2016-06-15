@@ -1,0 +1,105 @@
+background yes
+own_window_argb_visual 1
+own_window_argb_value 175
+font Sans:size=9
+xftfont Sans:size=9
+use_xft yes
+xftalpha 0.9
+update_interval 1
+total_run_times 0
+own_window yes
+own_window_title Conky
+own_window_type normal
+own_window_transparent no
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+minimum_size 250 5
+maximum_width 250
+draw_shades yes
+draw_outline no
+draw_borders no
+draw_graph_borders yes
+default_color white
+default_shade_color black
+default_outline_color green
+gap_x 5
+gap_y 0
+alignment top_right
+no_buffers yes
+cpu_avg_samples 2
+override_utf8_locale no
+uppercase yes
+hddtemp_host 127.0.0.1
+hddtemp_port 7634
+
+TEXT
+${color #FF0000}System ${hr 1}
+Hostname: ${alignr}${nodename}
+Kernel: ${alignr}${kernel}
+Uptime: ${alignr}${uptime}
+Processes: ${alignr}${processes} (${running_processes} Running)
+Disk Read: ${alignr}${diskio_read /dev/sda}
+Disk Write: ${alignr}${diskio_write /dev/sda}
+CPU Clock: ${alignr}${freq} MHz
+HD Temp: ${alignr}${hddtemp /dev/sdd}C
+GPU TEMP: ${alignr}${execi 5 nvidia-settings -t -q gpucoretemp}C
+CPU Temp: ${alignr}${hwmon 1 temp 1}C
+CPU1 Temp: ${alignr}${hwmon 1 temp 2}C
+CPU2 Temp: ${alignr}${hwmon 1 temp 3}C
+CPU3 Temp: ${alignr}${hwmon 1 temp 4}C
+CPU4 Temp: ${alignr}${hwmon 1 temp 5}C${color}
+
+${color #06ACFF}Processes ${hr 1}
+Highest CPU $alignr CPU% MEM%
+${top name 1}${alignr}${top cpu 1}${top mem 1}
+${top name 2}${alignr}${top cpu 2}${top mem 2}
+${top name 3}${alignr}${top cpu 3}${top mem 3}
+${top name 4}${alignr}${top cpu 4}${top mem 4}
+${top name 5}${alignr}${top cpu 5}${top mem 5}
+${top name 6}${alignr}${top cpu 6}${top mem 6}
+
+Highest MEM $alignr CPU% MEM%
+${top_mem name 1}${alignr}${top_mem cpu 1}${top_mem mem 1}
+${top_mem name 2}${alignr}${top_mem cpu 2}${top_mem mem 2}
+${top_mem name 3}${alignr}${top_mem cpu 3}${top_mem mem 3}
+${top_mem name 4}${alignr}${top_mem cpu 4}${top_mem mem 4}
+${top_mem name 5}${alignr}${top_mem cpu 5}${top_mem mem 5}
+${top_mem name 6}${alignr}${top_mem cpu 6}${top_mem mem 6}${color}
+
+${color #FFFF00}Resources ${hr 1}
+CPU1 ${alignr}${cpu cpu1}%
+${cpubar cpu1 7}
+CPU2 ${alignr}${cpu cpu2}%
+${cpubar cpu2 7}
+CPU3 ${alignr}${cpu cpu3}%
+${cpubar cpu3 7}
+CPU4 ${alignr}${cpu cpu4}%
+${cpubar cpu4 7}
+CPU5 ${alignr}${cpu cpu5}%
+${cpubar cpu5 7}
+CPU6 ${alignr}${cpu cpu6}%
+${cpubar cpu6 7}
+CPU7 ${alignr}${cpu cpu7}%
+${cpubar cpu7 7}
+CPU8 ${alignr}${cpu cpu8}%
+${cpubar cpu8 7}
+Ram ${alignr}${mem} / ${memmax} (${memperc}%)
+${membar 7}
+Swap ${alignr}${swap} / ${swapmax} (${swapperc}%)
+${swapbar 7}${color}
+
+${color #00FF00}Filesystem ${hr 1}
+Root SSD ${alignr}${fs_free /} / ${fs_size /}
+${fs_bar 7 /}tun
+Root HDD ${alignr}${fs_free /PATH1} / ${fs_size /PATH1}
+${fs_bar 7 /PATH1}tun
+Server SSD ${alignr}${fs_free /PATH2} / ${fs_size /PATH2}
+${fs_bar 7 /PATH2}
+Server HDD ${alignr}${fs_free /PATH3} / ${fs_size /PATH3}
+${fs_bar 7 /PATH3}${color}
+
+${color #CC02CC}Network ${hr 1}
+Connections: ${tcp_portmon 1 65535 count}${color}
+${color #CC02CC}DN ${downspeed eno1} ${alignr}UP ${upspeed eno1}
+${downspeedgraph eno1 38,107} ${alignr}${upspeedgraph eno1 38,107}
+Total ${totaldown eno1} ${alignr}Total ${totalup eno1}${color}
