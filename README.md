@@ -21,7 +21,7 @@ xfwm4
 index.theme
 ```
 
-Use the `wallpaper.png` and `conkyrc` files for the wallpaper and Conky
+Use the `wallpaper.jpg` and `conkyrc` files for the wallpaper and Conky
 configuration.
 
 ### Requirements
